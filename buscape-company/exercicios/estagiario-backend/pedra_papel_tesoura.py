@@ -9,10 +9,13 @@ class Juiz:
 class PedraPapelTesoura:
     input_tipos = ["pedra", "papel", "tesoura", "fim"]
 
-    def _get_input_jogador(self, ):
+    @classmethod
+    def _get_input_jogador(cls, ):
         input_jogador = None
-        while input_jogador not in self.input_tipos:
+        while input_jogador not in cls.input_tipos:
             input_jogador = input().lower()
+            if input_jogador not in cls.input_tipos:
+                print(f"Input inválido. Tente: {cls.input_tipos}")
         return input_jogador
 
 
@@ -21,9 +24,12 @@ class PedraPapelTesoura:
 
         pararJogo = False
         while not pararJogo:
+            print("Input (Jogador 1):")
             input_jogador1 = cls._get_input_jogador()
+            print("Input (Jogador 2):")
             input_jogador2 = cls._get_input_jogador()
             
+
 
 
 
@@ -31,4 +37,4 @@ class PedraPapelTesoura:
         
 
 if __name__ == "__main__":
-    pass
+    PedraPapelTesoura.jogar()
